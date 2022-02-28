@@ -32,6 +32,7 @@ $(function () {
             url: '/api/reguser',
             data: $(this).serialize(),
             success: function (res) {
+                console.log(res);
                 if (res.status !== 0) {
                     return layer.msg('注册失败');
                 }
@@ -47,10 +48,13 @@ $(function () {
             url: '/api/login',
             data: $(this).serialize(),
             success: function (res) {
+                console.log($(this).serialize());
+                console.log(res);
                 if (res.status !== 0) {
                     return layer.msg('登录失败');
                 }
                 layer.msg('登录成功');
+                console.log(res.token);
                 localStorage.setItem('token', res.token)
                 location.href = '/index.html'
             }
